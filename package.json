@@ -1,0 +1,11 @@
+{
+  "name": "junction-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "share": "concurrently -k -n BACKEND,FRONTEND,NGROK \"cd backend && npm run dev\" \"cd frontend && npm run dev\" \"npx ngrok http 5173\""
+  },
+  "devDependencies": {
+    "concurrently": "8.2.0"
+  }
+}
