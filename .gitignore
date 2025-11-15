@@ -7,5 +7,5 @@ backend/node_modules
 # Backend specific environment file
 backend/.env
 # Example file is safe to commit; real .env should stay local
-output
+# output
 backend/uploads
