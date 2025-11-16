@@ -9,3 +9,4 @@ backend/.env
 # Example file is safe to commit; real .env should stay local
 # output
 backend/uploads
+.DS_Store
