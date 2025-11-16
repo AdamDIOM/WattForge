@@ -114,7 +114,7 @@ Open the UI at the printed URL (typically http://localhost:5173/). The Vite dev 
   - GET `/api/predict-hourly.csv?start=ISO`
   - GET `/api/predict-monthly.csv?start=ISO`
 - AI
-  - POST `/api/analyze-training?format=text` → human-readable answer
+  - POST `/api/analyze-training?format=text` or `/api/analyse-training?format=text` → human‑readable answer
   - POST `/api/hyper-train` → per-group hourly/monthly + aggregated series
 
 ## Troubleshooting

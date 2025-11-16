@@ -131,7 +131,7 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="container py-6 text-center text-sm text-slate-600">
-  <div>Made with ❤️ — WattForge demo</div>
+  <div>Made with ❤️ — WattForge</div>
   <div className="mt-2">© {new Date().getFullYear()} WattForge</div>
       </div>
     </footer>
@@ -383,11 +383,11 @@ export default function App() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-nordic-800">Watt's next?</h1>
-              <p className="mt-2 text-slate-700 max-w-2xl">A focused demo: upload training data, run forecasts, and experiment with AI-driven synthetic generation.</p>
+              <p className="mt-2 text-slate-700 max-w-2xl">Upload training data, run forecasts, and experiment with AI‑driven synthetic generation.</p>
             </div>
             <div className="md:w-1/3 bg-white rounded-lg p-4 shadow">
               <div className="text-sm font-medium text-slate-600">Project</div>
-              <div className="mt-1 font-semibold">Forecasting demo</div>
+              <div className="mt-1 font-semibold">Forecasting</div>
               <div className="text-xs text-slate-500 mt-2">Use the panels to upload training workbooks, run forecasts, and test AI generation.</div>
             </div>
           </div>
@@ -592,7 +592,7 @@ export default function App() {
                     if (mr.ok) {
                       const mb = new Blob([monthlyText], { type: 'text/csv' })
                       const mu = URL.createObjectURL(mb)
-                      const a = document.createElement('a'); a.href = mu; a.download = 'prediction_monthly.csv'; a.click(); URL.revokeObjectURL(mu)
+                      const a = document.createElement('a'); a.href = mu; a.download = 'prediction_monthly.csv'; a2.click(); URL.revokeObjectURL(mu)
                     }
                     setToast({ type: 'success', text: 'Downloaded direct CSV endpoints' })
                   } catch (e) {
@@ -638,7 +638,7 @@ export default function App() {
                   } finally {
                     setAnalyzing(false)
                   }
-                }}>{analyzing ? 'Analyzing…' : 'Analyze'}</button>
+                }}>{analyzing ? 'Analysing…' : 'Analyse'}</button>
                 <button className="px-3 py-2 bg-white border rounded" onClick={async () => {
                   if (!coords) { setToast({ type: 'error', text: 'No location set yet' }); return }
                   try {

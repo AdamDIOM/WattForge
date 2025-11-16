@@ -1,5 +1,27 @@
 [
   {
+    "filename": "1763259777512-20251111_JUNCTION_training.xlsx",
+    "originalname": "20251111_JUNCTION_training.xlsx",
+    "path": "uploads/1763259777512-20251111_JUNCTION_training.xlsx",
+    "uploadedAt": "2025-11-16T02:23:26.738Z",
+    "summary": {
+      "prices_rows": 32880,
+      "consumption_rows": 32856,
+      "groups_rows": 112
+    }
+  },
+  {
+    "filename": "1763259621994-20251111_JUNCTION_training.xlsx",
+    "originalname": "20251111_JUNCTION_training.xlsx",
+    "path": "uploads/1763259621994-20251111_JUNCTION_training.xlsx",
+    "uploadedAt": "2025-11-16T02:20:51.401Z",
+    "summary": {
+      "prices_rows": 32880,
+      "consumption_rows": 32856,
+      "groups_rows": 112
+    }
+  },
+  {
     "filename": "1763250554403-20251111_JUNCTION_training.xlsx",
     "originalname": "20251111_JUNCTION_training.xlsx",
     "path": "uploads/1763250554403-20251111_JUNCTION_training.xlsx",

@@ -1088,8 +1088,8 @@ OUTPUT NOW: Return ONLY the JSON object adhering to contract.`
   }
 })
 
-// Analyze uploaded training data using Gemini (or mock if not configured).
-// POST /api/analyze-training
+// Analyse uploaded training data using Gemini (or mock if not configured).
+// POST /api/analyze-training (American spelling) and /api/analyse-training (British spelling)
 // Body: { lat?, lon?, ev? (percent), hours? (forecast horizon), extraNotes? }
 app.post('/api/analyze-training', express.json(), async (req, res) => {
   try {
@@ -1177,7 +1177,7 @@ app.post('/api/analyze-training', express.json(), async (req, res) => {
         prompt = directPieces.join('\n')
       } else {
         const promptPieces = [
-          'You are an energy analytics assistant. Analyze the uploaded training data and produce a JSON object with keys: summary, drivers, recommendations, generated_forecast (48 hourly values), and if requested (question mentions next month), add monthly_estimate {next_month_total}.',
+          'You are an energy analytics assistant. Analyse the uploaded training data and produce a JSON object with keys: summary, drivers, recommendations, generated_forecast (48 hourly values), and if requested (question mentions next month), add monthly_estimate {next_month_total}.',
           `Training aggregates: avg=${Math.round(avg*100)/100}, min=${Math.round(min*100)/100}, max=${Math.round(max*100)/100}, peakHour=${peakHour}.`,
           `Hourly averages (0-23): ${hourlyAvg.map(v=>Math.round(v*100)/100).join(',')}.`,
           `Consumption sample (timestamps + total hints): ${JSON.stringify(consumptionSample)}.`,
@@ -1389,8 +1389,32 @@ app.post('/api/analyze-training', express.json(), async (req, res) => {
       return res.json({ result: 'gemini-analysis-csv', hourly_csv: hourlyCsv, monthly_csv: monthlyCsv })
     }
   } catch (err) {
-    console.error('analyze-training error', err)
+  console.error('analyse-training error', err)
     res.status(500).json({ error: 'Analysis failed' })
+  }
+})
+
+// British spelling alias
+app.post('/api/analyse-training', express.json(), async (req, res) => {
+  // Forward to analyse/analyze logic by calling same code path: reuse handler body.
+  // Simple delegation: mutate URL path expectation not required since logic is identical.
+  req.url = '/api/analyze-training'
+  // Re-run the same handler by invoking the original function via a direct call would require extraction.
+  // For brevity, duplicate minimal wrapper to call the same internal sequence (could refactor into shared function).
+  try {
+    if (!TRAINING_STORE.consumption || !TRAINING_STORE.prices || !TRAINING_STORE.groups) {
+      return res.status(400).json({ error: 'No training data uploaded. Call /api/upload-training first.' })
+    }
+    const { lat, lon, ev, hours = 48, extraNotes, forecast: incomingForecast, answerStyle } = req.body || {}
+    const wantText = (req.query && req.query.format === 'text')
+    const style = (answerStyle || '').toLowerCase() === 'direct' ? 'direct' : 'structured'
+    // (Reuse existing internal code by referencing below functions; to avoid duplication we could factor out but hackathon speed.)
+    // For maintainability, consider refactoring original handler into a shared async function.
+    // Inline minimal duplication triggers analysis; since code length large, leaving as pointer to existing route would be ideal.
+    // Simplified response for alias: redirect client to original endpoint.
+    return res.redirect(307, '/api/analyze-training' + (wantText ? '?format=text' : ''))
+  } catch (e) {
+    res.status(500).json({ error: 'Analyse training alias failed' })
   }
 })
 
