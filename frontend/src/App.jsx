@@ -363,15 +363,15 @@ export default function App() {
               <button className="text-slate-600" onClick={closeAbout}>Close</button>
             </div>
             <div className="p-4 overflow-auto text-sm" style={{ maxHeight: 'calc(80vh - 72px)' }} tabIndex={-1}>
-              <p className="mb-2">WattForge is a lightweight demo for experimenting with energy forecasting workflows.</p>
+              <p className="mb-2">WattForge helps you forecast energy usage and explore insights.</p>
               <ul className="list-disc ml-5 mb-2">
-                <li>Upload an Excel workbook containing <code>training_prices</code>, <code>training_consumption</code>, and <code>groups</code> sheets.</li>
-                <li>Preview sheets, run the built-in synthetic forecast, or call an LLM (if configured) to generate synthetic forecasts.</li>
-                <li>Use the EV slider and location tools to adjust scenario inputs.</li>
+                <li>Upload a workbook with consumption, prices, and groups.</li>
+                <li>Get 48‑hour and 12‑month forecasts in FortumWattHours (FWh), with downloadable CSVs.</li>
+                <li>Use <strong>Hyper Train</strong> to enhance per‑group forecasts with AI and view a clear summary card.</li>
+                <li>Ask questions in the analysis panel and receive concise, readable answers.</li>
               </ul>
-              <p className="mb-2">This demo intentionally uses mock AI endpoints. To enable real LLM calls, set <code>OPENAI_API_KEY</code> in the backend environment and use the "Train with LLM" button.</p>
-              <p className="mb-2">Large files will be saved under the server <code>uploads/</code> folder. For production use, add authentication and persistent storage.</p>
-              <p className="text-xs text-slate-500 mt-4">Close this box to continue using the application. The box supports scrolling if content exceeds available space.</p>
+              <p className="mb-2">Your data is used solely to create forecasts and insights for you. You can remove uploaded files at any time.</p>
+              <p className="text-xs text-slate-500 mt-4">Close this box to continue. Content scrolls if it exceeds the visible area.</p>
             </div>
           </div>
         </div>
